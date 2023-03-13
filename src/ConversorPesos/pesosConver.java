@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class pesosConver extends JFrame {
 
@@ -54,6 +56,23 @@ public class pesosConver extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		txtDinero = new JTextField();
+		txtDinero.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+				int key = e.getKeyChar();
+
+			    boolean numeros = key >= 48 && key <= 57;
+			        
+			    if (!numeros)
+			    {
+			    	JOptionPane.showMessageDialog(null, "DIGITE SOLO NÚMEROS");
+			    	txtDinero.setText("");
+			        e.consume();
+			        
+			    }
+			}
+		});
 		txtDinero.setBounds(121, 62, 200, 24);
 		contentPane.add(txtDinero);
 		txtDinero.setColumns(10);
